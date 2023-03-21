@@ -8,10 +8,10 @@ import { UserService } from './user.service';
     <input #username type="text" placeholder="What is your name?">
     <button (click)="saveUserName(username.value)">Save</button>
     <div *ngIf="showSay">
-      <p>Open the Console to view the unsuscribing logs when navigating between hello and goodbye.</p>
       <a [routerLink]="['/hello']">Say hello</a>
       <br/>
       <a [routerLink]="['/goodbye']">Say goodbye</a>
+      <p>Open the console to view the unsubscribe logs by navigating between the hello and goodbye components.</p>
     </div>
     <router-outlet></router-outlet>
   `,
