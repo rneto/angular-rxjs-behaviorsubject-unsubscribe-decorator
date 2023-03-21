@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BehaviorSubject, interval, Observable, Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 
 import { AutoUnsubscribe } from './auto-unsuscribe.decorator';
 import { UserService } from './user.service';
