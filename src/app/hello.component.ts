@@ -1,16 +1,19 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
+import { BehaviorSubject, interval, Observable, Subscription } from 'rxjs';
 
+import { AutoUnsubscribe } from './auto-unsuscribe.decorator';
 import { UserService } from './user.service';
 
+@AutoUnsubscribe
 @Component({
   selector: 'hello',
   template: `
     <h1 *ngIf="username">Hello {{ username }}!</h1>
-  `
+  `,
 })
-export class HelloComponent implements OnInit, OnDestroy {
+export class HelloComponent implements OnInit {
   username: string;
+  mySubject$ = new BehaviorSubject<string>('Initial Value');
 
   private userServiceSubscription: Subscription | undefined;
 
@@ -18,13 +21,9 @@ export class HelloComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.userServiceSubscription = this.userService.currentUser.subscribe(
-      currentUser => {
+      (currentUser) => {
         this.username = currentUser.username;
       }
     );
-  }
-
-  ngOnDestroy(): void {
-    this.userServiceSubscription?.unsubscribe();
   }
 }
