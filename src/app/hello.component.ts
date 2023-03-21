@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BehaviorSubject, Subscription } from 'rxjs';
 
-import { AutoUnsubscribe } from './auto-unsuscribe.decorator';
+import { AutoUnsubscribe } from './auto-unsubscribe.decorator';
 import { UserService } from './user.service';
 
 @AutoUnsubscribe
